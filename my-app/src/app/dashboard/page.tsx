@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from 'react';
 import { Calendar, Clock, Trophy, Star, Users, Book, Bookmark, ChevronRight, X } from 'lucide-react';
-import { ethers } from 'ethers';
+import { ethers, BrowserProvider } from 'ethers';
 import Link from 'next/link';
+import lingPro from '../contractInfo/lingPro.json'
 
 interface Lesson {
   title: string;
@@ -67,8 +68,44 @@ const DashboardPage = () => {
 
   const handleConfirm = () => {
     setShowConfirmation(false);
+    donateInititate()
     // Additional logic for starting the lesson
   };
+
+  const donateInititate = async () =>{
+    const claimAmt = 10;
+    const contractAddress = "0x94B2994f54BEeF1C03Ded4F74316E0f24428c4E4"
+    const provider = new BrowserProvider(window.ethereum);
+
+    const signer = await provider.getSigner();
+    const address = await signer.getAddress();
+    console.log("Wallet Address:", address);
+    const humorTokenContract = new ethers.Contract(contractAddress, lingPro.abi, signer)
+    // mint();
+    console.log(claimAmt, "========inside withdraw===")
+
+    // await (await humorTokenContract.mint(address ,ethers.parseUnits(claimAmt.toString(), 18))).wait();
+    await (await humorTokenContract.donate(address,"0x94A7Af5edB47c3B91d1B4Ffc2CA535d7aDA8CEDe" ,ethers.parseUnits(claimAmt.toString(), 18))).wait();
+
+  }
+
+  const withdrawInititate = async () =>{
+    setShowDropdown(!showDropdown)
+    const claimAmt = 25;
+    const contractAddress = "0x94B2994f54BEeF1C03Ded4F74316E0f24428c4E4"
+    const provider = new BrowserProvider(window.ethereum);
+
+    const signer = await provider.getSigner();
+    const address = await signer.getAddress();
+    console.log("Wallet Address:", address);
+    const humorTokenContract = new ethers.Contract(contractAddress, lingPro.abi, signer)
+    // mint();
+    console.log(claimAmt, "========inside withdraw===")
+
+    await (await humorTokenContract.mint(address ,ethers.parseUnits(claimAmt.toString(), 18))).wait();
+    // await (await humorTokenContract.donate(address,"0x94A7Af5edB47c3B91d1B4Ffc2CA535d7aDA8CEDe" ,ethers.parseUnits(claimAmt.toString(), 18))).wait();
+
+  }
 
   const lessons: Lesson[] = [
     {
@@ -204,7 +241,7 @@ const DashboardPage = () => {
                 </div>
                 {showDropdown && (
                   <div className="absolute right-0 mt-2 w-40 bg-white/90 backdrop-blur-sm shadow-md rounded-lg p-4">
-                    <button className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-sm font-medium hover:bg-red-600 transition duration-300">
+                    <button onClick={withdrawInititate} className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-sm font-medium hover:bg-red-600 transition duration-300">
                       Withdraw
                     </button>
                   </div>
