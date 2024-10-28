@@ -1,7 +1,10 @@
 # Getting Started with Project
 
-## Add LL contract address to wallet
+## Add LPC contract address to wallet
 
-Contract address : 0x5a12A1aB34c55F90AC8C0b50e249dE3117c0F598
+Contract address : 0x94B2994f54BEeF1C03Ded4F74316E0f24428c4E4
 
-[Verify LL on testnet](https://testnet.aiascan.com/token/0x5a12A1aB34c55F90AC8C0b50e249dE3117c0F598)
+[Verify LPC on testnet](https://testnet.aiascan.com/token/0x94B2994f54BEeF1C03Ded4F74316E0f24428c4E4)
+
+## Project Description LingPro Build on AIA CHAIN
+
