@@ -19,11 +19,17 @@ LingoPro is a decentralized language exchange DApp that connects users globally,
 Features:
 
 -**Anonymous Language Learning**: Users can connect anonymously, removing barriers tied to identity.
+
 -**Blockchain-Powered Security**: Built on AIA Chain, all exchanges are safe, transparent, and tamper-proof.
+
 -**Personalized Tokens**: Reward tokens are provided for active participation and progress, fostering motivation and engagement.
+
 -**Global Connection**: Connect with native speakers worldwide for authentic language practice.
+
 -**Flexible Learning Format**: Choose between text, audio, and video sessions to match learning preferences.
+
 -**LingoPro** redefines language exchange by blending privacy, blockchain security, and incentivized learning in a decentralized DApp.
+
 First, run the development server:
 
 ```bash
